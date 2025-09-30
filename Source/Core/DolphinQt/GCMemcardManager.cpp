@@ -530,8 +530,10 @@ void GCMemcardManager::ImportFiles(Slot slot, std::span<const Memcard::Savefile>
 
   if (Memcard::HasDuplicateIdentity(savefiles))
   {
+
+    const QString qfilename = DolphinFileDialog::getSaveFileName
     error_messages.push_back(
-        tr("At least two of the selected save files have the same internal filename."));
+        tr("At least two of the selected save files have the same internal filename: %1").arg(qfilename));
   }
 
   for (const Memcard::Savefile& savefile : savefiles)
